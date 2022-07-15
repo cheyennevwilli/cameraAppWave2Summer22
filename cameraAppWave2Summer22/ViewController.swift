@@ -18,6 +18,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 
+    @IBOutlet weak var imageDisplay: UIImageView!
+    
     @IBAction func choosePhotoTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         
@@ -28,6 +30,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = .camera
         
         present (imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageDisplay.image = selectedImage
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
 
