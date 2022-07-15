@@ -23,6 +23,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         present (imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func takeSelfieTapped(_ sender: Any) {
+        imagePicker.sourceType = .camera
+        
+        present (imagePicker, animated: true, completion: nil)
+    }
 }
 
 //testing
